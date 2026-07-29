@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:reciepe_app/error/error_handler.dart';
 import 'package:reciepe_app/error/failure.dart';
 import 'package:reciepe_app/models/category_model.dart';
-import 'package:reciepe_app/widgets/recipe_card.dart';
+import 'package:reciepe_app/models/meal_model.dart';
 
 class ApiService {
   final dio = Dio(
@@ -44,7 +44,7 @@ class ApiService {
     }
   }
 
-  Future<Either<Failure, List<Meal>>> getMealsByCategory(
+  Future<Either<Failure, List<MealModel>>> getMealsByCategory(
     String category,
   ) async {
     try {
@@ -55,10 +55,10 @@ class ApiService {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         final jsonRes = response.data["meals"];
         if (jsonRes == null) {
-          return right(<Meal>[]);
+          return right(<MealModel>[]);
         }
         final meals = (jsonRes as List)
-            .map((e) => Meal.fromJson(e))
+            .map((e) => MealModel.fromJson(e))
             .toList();
         return right(meals);
       } else {

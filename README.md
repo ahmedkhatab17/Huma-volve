@@ -1,6 +1,6 @@
-# Recipe App - Day 2 Task
+# Recipe App - Day 3 Task: Cubit State Management
 
-Flutter application with API integration, category filtering, error handling, and search.
+Flutter application with Cubit state management, API integration, category filtering, error handling, and search.
 
 ## Screenshots
 
@@ -10,10 +10,11 @@ Flutter application with API integration, category filtering, error handling, an
 
 ## Features
 
-- **Category Filter:** Fetch categories dynamically and filter recipes.
-- **Error Handling:** Dio client error handling using `Either<Failure, T>` from Dartz.
-- **Search:** Instant search filtering per category.
-- **Loading & UI:** Skeleton loading and clean error states.
+- **Cubit State Management:** Replaced FutureBuilder with `RecipeHomeCubit` and `BlocBuilder` using `flutter_bloc`.
+- **Sealed States:** Implemented sealed `RecipeHomeState` classes (`Initial`, `Loading`, `Failure`, `CategoriesSuccess`, `MealsSuccess`).
+- **Category Filter:** Dynamic category fetching and meal filtering by category.
+- **Error Handling:** Functional error handling using `Either<Failure, T>` from Dartz and Dio HTTP client.
+- **Search & UI:** Instant search filter, skeleton loading, and custom error states with retry.
 
 ## How to Run
 

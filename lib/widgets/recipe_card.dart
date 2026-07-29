@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:reciepe_app/models/meal_model.dart';
 import '../constants/app_colors.dart';
 
 class RecipeCard extends StatelessWidget {
-  final Meal meal;
+  final MealModel meal;
   final VoidCallback? onTap;
   final VoidCallback? onFavoriteToggle;
+
   const RecipeCard({
     super.key,
     required this.meal,
@@ -19,10 +21,8 @@ class RecipeCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Recipe Image with Favorite Badge Overlay
           Stack(
             children: [
-              // Image Container
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: AspectRatio(
@@ -58,7 +58,6 @@ class RecipeCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          // Recipe Title
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2.0),
             child: Text(
@@ -75,26 +74,6 @@ class RecipeCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class Meal {
-  String idMeal;
-  String strMeal;
-  String strMealThumb;
-
-  Meal({
-    required this.idMeal,
-    required this.strMeal,
-    required this.strMealThumb,
-  });
-
-  factory Meal.fromJson(Map<String, dynamic> json) {
-    return Meal(
-      idMeal: json['idMeal'] ?? '',
-      strMeal: json['strMeal'] ?? 'Unknown',
-      strMealThumb: json['strMealThumb'] ?? '',
     );
   }
 }
